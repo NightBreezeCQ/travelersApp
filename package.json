@@ -1,0 +1,28 @@
+{
+  "name": "travel-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "npx eslint --ext .ts src",
+    "start": "tsc && node dist/index.js",
+    "watch-update": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "joi": "^14.3.1",
+    "knex": "^0.16.3",
+    "koa2-cors": "^2.0.6",
+    "mysql": "^2.16.0",
+    "travel": "file:../travel"
+  },
+  "devDependencies": {
+    "@types/knex": "^0.16.1",
+    "@types/koa2-cors": "^2.0.1",
+    "@types/node": "^12.12.9"
+  }
+}
