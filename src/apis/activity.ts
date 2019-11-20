@@ -1,9 +1,9 @@
 
 
 import * as joi from 'joi'
-import { TravelApis } from 'travel'
+import { travelersApis } from 'travelers'
 
-let items: TravelApis = [
+let items: travelersApis = [
     {
         path: '/everyDay',
         method: 'get',

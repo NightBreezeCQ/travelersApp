@@ -1,7 +1,7 @@
 
-import { TravelCtx } from "travel";
+import { travelersCtx } from "travelers";
 
-export async function everyDay_list(ctx: TravelCtx) {
+export async function everyDay_list(ctx: travelersCtx) {
     let {  body, srvs } = ctx
     const { knex } = srvs
     
@@ -10,7 +10,7 @@ export async function everyDay_list(ctx: TravelCtx) {
     }
 }
 
-export async function everyDay_award(ctx: TravelCtx) {
+export async function everyDay_award(ctx: travelersCtx) {
 
     let { request: { body }, params, status ,srvs} = ctx
     const { knex } =srvs

@@ -1,4 +1,4 @@
-import { Code } from 'travel'
+import { Code } from 'travelers'
 import * as  bcrypt from './srvs/bcrypt'
 import * as Knex from 'knex'
 import code from './srvs/code'

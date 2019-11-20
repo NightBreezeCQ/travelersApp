@@ -1,12 +1,12 @@
 
-import { travel, TravelOption, TravelApis } from 'travel'
+import { travelers, travelersOption } from 'travelers'
 import * as  apis from './apis/index'
 import * as  srvs from './srvs/index'
 import * as controllers from './controllers/index'
 import config from './config/index'
 import * as cors from 'koa2-cors'
 
-const option: TravelOption = {
+const option: travelersOption = {
   config,
   before: function (app) {
     app.use(cors());
@@ -30,4 +30,4 @@ const option: TravelOption = {
 }
 
 
-travel(option)
+travelers(option)
