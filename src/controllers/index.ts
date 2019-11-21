@@ -1,9 +1,9 @@
 
-import * as  activity from './activity'
+import * as activity from "./activity";
 
 
 const controllers = {
     ...activity
-}
+};
 
 export = controllers

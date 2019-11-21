@@ -1,4 +1,4 @@
 
-import activity from './activity'
+import activity from "./activity";
 
-export { activity }
+export { activity };

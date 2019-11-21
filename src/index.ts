@@ -1,33 +1,26 @@
 
-import { travelers, travelersOption } from 'travelers'
-import * as  apis from './apis/index'
-import * as  srvs from './srvs/index'
-import * as controllers from './controllers/index'
-import config from './config/index'
-import * as cors from 'koa2-cors'
+import { travelers, travelersOption,Response,Request,NextFunction } from "travelers";
+import * as apis from "./apis/index";
+import * as srvs from "./srvs/index";
+import * as controllers from "./controllers/index";
+import config from "./config/index";
 
 const option: travelersOption = {
-  config,
-  before: function (app) {
-    app.use(cors());
-  },
-  srvs,
-  args: {
-    apis,
-    controllers,
-  },
-  after: function (app, obj: any) {
-    // console.log(JSON.stringify(obj.swagger))
+    config,
+    before: function (app) {
+    
+    },
+    srvs,
+    args: {
+        apis,
+        controllers,
+    },
+    after: function (app, obj: any) {
+        app.use((req: Request, res: Response) => {
+            const { codes } = req.srvs;
+            return codes.notfind.resJson(res);
+        });
+    }
+};
 
-    // app.use(bodyparser({
-    //   enableTypes: ['json', 'form', 'text']
-    // }))
-
-    // app.use(json())
-    // app.use(logger())
-
-  }
-}
-
-
-travelers(option)
+travelers(option);

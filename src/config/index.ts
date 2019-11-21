@@ -1,15 +1,15 @@
 
 
 // import a form 
-import development from './development'
-import production from './production'
+import development from "./development";
+import production from "./production";
 
-let config = development
+let config = development;
 
-const env = `./${process.env.NODE_ENV || 'development'}`
+const env = `./${process.env.NODE_ENV || "development"}`;
 
 if (env == "production") {
-    config = production
+    config = production;
 }
 
-export default config
+export default config;

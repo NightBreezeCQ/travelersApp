@@ -1,15 +1,15 @@
 
 
-import * as joi from 'joi'
-import { travelersApis } from 'travelers'
+import * as joi from "joi";
+import { travelersApis } from "travelers";
 
 let items: travelersApis = [
     {
-        path: '/everyDay',
-        method: 'get',
-        summary: '获取游戏每日活动列表',
-        description: '获取游戏每日活动列表',
-        operationId: 'everyDay_list',
+        path: "/everyDay",
+        method: "get",
+        summary: "获取游戏每日活动列表",
+        description: "获取游戏每日活动列表",
+        operationId: "everyDay_list",
         req: {
             query: {
                 name: joi.string().required().regex(/^\w+$/)
@@ -22,11 +22,11 @@ let items: travelersApis = [
         }
     },
     {
-        path: '/everyDay',
-        method: 'post',
-        summary: '获取游戏每日活动列表',
-        description: '获取游戏每日活动列表',
-        operationId: 'everyDay_list1',
+        path: "/everyDay",
+        method: "post",
+        summary: "获取游戏每日活动列表",
+        description: "获取游戏每日活动列表",
+        operationId: "everyDay_list1",
         req: {
             query: {
                 name: joi.string().required()
@@ -39,9 +39,9 @@ let items: travelersApis = [
             })
         }
     }
-]
+];
 
-export default items
+export default items;
 
 // [
 //     {
