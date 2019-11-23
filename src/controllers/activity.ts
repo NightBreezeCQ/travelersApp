@@ -3,10 +3,8 @@ import { Request, Response } from "travelers";
 
 export async function everyDay_list(req: Request, res: Response) {
     let { body, srvs } = req;
-    const { knex } = srvs;
-    res.json({
-        code: 200
-    });
+    const { knex, codes } = srvs;
+    codes.ok.resJson(res);
 }
 
 export async function everyDay_award(req: Request, res: Response) {
