@@ -1,5 +1,5 @@
 
-import { travelers, travelersOption,Response,Request,NextFunction } from "travelers";
+import { travelers, travelersOption,Response,Request,NextFunction,Config } from "travelers";
 import * as apis from "./apis/index";
 import * as srvs from "./srvs/index";
 import * as controllers from "./controllers/index";
@@ -15,7 +15,7 @@ const option: travelersOption = {
         apis,
         controllers,
     },
-    after: function (app, obj: any) {
+    after: function (app) {
         app.use((req: Request, res: Response) => {
             const { codes } = req.srvs;
             return codes.notfind.resJson(res);

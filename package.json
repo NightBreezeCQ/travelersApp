@@ -11,7 +11,7 @@
     "knex": "^0.16.3",
     "koa2-cors": "^2.0.6",
     "mysql": "^2.16.0",
-    "travelers": "^2.0.0"
+    "travelers": "file:../travelers"
   },
   "devDependencies": {
     "@types/node": "^12.12.9",
@@ -21,7 +21,9 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "pro": "tsc && pm2 start pm2.json",
     "lint": "npx eslint --ext .ts src"
   },
   "repository": {

@@ -32,3 +32,10 @@ declare global {
     }
 }
 
+declare global {
+    namespace travelers {
+        interface q {
+
+        }
+    }
+}
