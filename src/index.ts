@@ -1,26 +1,28 @@
 
-import { travelers, travelersOption,Response,Request,NextFunction,Config } from "travelers";
+import { travelers, TravelersOption, Req, Res, NextFunction, Config } from "travelers";
 import * as apis from "./apis/index";
 import * as srvs from "./srvs/index";
-import * as controllers from "./controllers/index";
+import controllers from "./controllers/index";
 import config from "./config/index";
+import * as security from "./security";
 
-const option: travelersOption = {
+const option: TravelersOption = {
     config,
     before: function (app) {
-    
+
     },
     srvs,
-    args: {
-        apis,
-        controllers,
-    },
-    after: function (app) {
-        app.use((req: Request, res: Response) => {
+    security,
+    apis,
+    controllers,
+    after: function (app, srvs) {
+        app.use((req: Req, res: Res) => {
             const { codes } = req.srvs;
             return codes.notfind.resJson(res);
         });
     }
 };
 
-travelers(option);
+travelers(option).then(data => {
+    // console.log(JSON.stringify(data, null, 4));
+});

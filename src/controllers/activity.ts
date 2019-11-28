@@ -1,13 +1,14 @@
 
-import { Request, Response } from "travelers";
+import { Req, Res } from "travelers";
 
-export async function everyDay_list(req: Request, res: Response) {
+export async function everyDay_list(req: Req, res: Res) {
     let { body, srvs } = req;
     const { knex, codes } = srvs;
+    req.srvs.
     codes.ok.resJson(res);
 }
 
-export async function everyDay_award(req: Request, res: Response) {
+export async function everyDay_award(req: Req, res: Res) {
     let { params, srvs, body } = req;
     const { knex } = srvs;
     let { id } = params;
@@ -30,21 +31,3 @@ export async function everyDay_award(req: Request, res: Response) {
 }
 
 
-export async function time_put(req: Request, res: Response) {
-    
-    let { body, params } = req;
-    const {knex} = req.srvs;
-    let { id } = params;
-    let { title, start_time, end_time } = body;
-    let activity_time = await knex("activity_time").where({ id }).first();
-    if (!activity_time) {
-        res.send ({
-            code: 200, msg: "id不存在"
-        }); 
-        return;
-    }
-    await knex("activity_time").update(body).where({ id });
-    res.send({
-        code: 200, msg: "修改成功"
-    }); 
-}

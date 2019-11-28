@@ -24,7 +24,8 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "pro": "tsc && pm2 start pm2.json",
-    "lint": "npx eslint --ext .ts src"
+    "lint": "npx eslint --ext .ts src",
+    "fix": "npx eslint --ext .ts src --fix"
   },
   "repository": {
     "type": "git",

@@ -5,4 +5,4 @@ const controllers = {
     ...activity
 };
 
-export = controllers
+export default controllers;
