@@ -1,4 +1,4 @@
-import { Code ,Res} from "travelers";
+import { Code, Res, Logger } from "travelers";
 import * as bcrypt from "./srvs/bcrypt";
 import * as Knex from "knex";
 import code from "./srvs/code";
@@ -27,8 +27,9 @@ declare global {
             codes: Codes
             knex: Knex
             bcrypt: Bcrypt
+            logger
         }
-        interface Config extends $Config{
+        interface Config extends $Config {
 
         }
     }

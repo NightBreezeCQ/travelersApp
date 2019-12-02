@@ -1,5 +1,5 @@
 
-import { travelers, TravelersOption, Req, Res, NextFunction, Config } from "travelers";
+import { travelers, TravelersOption, Req, Res, NextFunction } from "travelers";
 import * as apis from "./apis/index";
 import * as srvs from "./srvs/index";
 import controllers from "./controllers/index";
