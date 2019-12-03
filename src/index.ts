@@ -18,6 +18,7 @@ const option: TravelersOption = {
     after: function (app, srvs) {
         app.use((req: Req, res: Res) => {
             const { codes } = req.srvs;
+            req.srvs.loggerInfo.info('eeeeee')
             return codes.notfind.resJson(res);
         });
     }

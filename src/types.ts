@@ -27,10 +27,10 @@ declare global {
             codes: Codes
             knex: Knex
             bcrypt: Bcrypt
-            logger
-        }
-        interface Config extends $Config {
-
+            logger: Logger
+            loggerError: Logger
+            loggerInfo: Logger
+            $config: $Config
         }
     }
 }
