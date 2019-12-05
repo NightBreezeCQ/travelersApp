@@ -4,8 +4,7 @@
   "description": "travelers app",
   "main": "dist/index.js",
   "dependencies": {
-    "@types/joi": "^14.3.4",
-    "@types/knex": "^0.16.1",
+    "amqplib": "^0.5.5",
     "bcrypt": "3.0.6",
     "joi": "^14.3.1",
     "knex": "^0.16.3",
@@ -14,6 +13,9 @@
     "travelers": "^2.1.2"
   },
   "devDependencies": {
+    "@types/amqplib": "^0.5.13",
+    "@types/joi": "^14.3.4",
+    "@types/knex": "^0.16.1",
     "@types/node": "^12.12.9",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
