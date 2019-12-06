@@ -5,7 +5,7 @@ export async function everyDay_list(req: Req, res: Res) {
     let { body, srvs } = req;
     const { knex, codes } = srvs;
     req.srvs.
-    codes.ok.resJson(res);
+        codes.ok.resJson(res);
 }
 
 export async function everyDay_award(req: Req, res: Res) {

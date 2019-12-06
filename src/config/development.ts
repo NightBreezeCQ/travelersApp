@@ -1,4 +1,3 @@
-
 export default {
     port: 80,
     host: "0.0.0.0",
@@ -40,9 +39,20 @@ export default {
     },
     redis: {
         port: 6379, // Redis port
-        host: "47.75.215.23", // Redis host
+        host: "127.0.0.1", // Redis host
         family: 4, // 4 (IPv4) or 6 (IPv6)
-        password: "wb67gtce",
+        password: "password",
         db: 0
     },
+    mq:{
+        protocol: "amqp",
+        hostname: "localhost",
+        port: 5672,
+        username: "admin",
+        password: "admin",
+        locale: "en_US",
+        frameMax: 0,
+        heartbeat: 0,
+        vhost: "my_vhost",
+    }
 };
