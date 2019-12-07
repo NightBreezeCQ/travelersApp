@@ -1,7 +1,8 @@
 import * as amqp from "amqplib";
-import * as srvs from "./index";
 import config from "../config/index";
-import * as mqControllers from "../mqControllers/index";
+import mqControllers from "../mqControllers/index";
+import { Srvs } from "travelers";
+
 
 let smsChannel: amqp.Channel;
 
@@ -12,19 +13,9 @@ const mq = {
     consumer: {}
 };
 
-async function consumer() {
+async function consumer(srvs: Srvs) {
     // 创建链接对象
-    const connection = await amqp.connect({
-        protocol: "amqp",
-        hostname: "localhost",
-        port: 5672,
-        username: "admin",
-        password: "admin",
-        locale: "en_US",
-        frameMax: 0,
-        heartbeat: 0,
-        vhost: "my_vhost",
-    });
+    const connection = await amqp.connect(config.mq);
 
     // 获取通道
     const channel = await connection.createChannel();
@@ -44,9 +35,15 @@ async function consumer() {
     // await channel.bindQueue(queueName, exchangeName, routingKey);
 
     // 消费
-    await channel.consume(queueName, msg => {
-        console.log("Consumer：", msg, msg.content.toString());
-        if (mqControllers[queueName]) mqControllers[queueName](srvs);
+    await channel.consume(queueName, async msg => {
+        console.log("Consumer：", msg.content.toString());
+        try {
+            if (mqControllers[queueName]) await mqControllers[queueName](srvs);
+        } catch (error) {
+            srvs.loggerError.error(error);
+            return;
+        }
+
         channel.ack(msg);
     });
 
@@ -81,12 +78,14 @@ async function producer() {
     // await connection.close();
 }
 
-producer();
-consumer();
 
-setTimeout(() => {
-    mq.producer.sms.publish("", "helloKoalaQueue", Buffer.from("........."));
-    mq.producer.sms.publish("", "helloKoalaQueue1", Buffer.from("........."));
-}, 2000);
+export function run(srvs: Srvs) {
+    producer();
+    consumer(srvs);
+    setTimeout(() => {
+        mq.producer.sms.publish("", "helloKoalaQueue", Buffer.from("1111111111111"));
+        mq.producer.sms.publish("", "helloKoalaQueue1", Buffer.from("2222222222222"));
+    }, 2000);
+}
 
-export default mq;
+export { mq };

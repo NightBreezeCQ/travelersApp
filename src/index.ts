@@ -5,11 +5,15 @@ import * as srvs from "./srvs/index";
 import controllers from "./controllers/index";
 import config from "./config/index";
 import * as security from "./security";
+import * as mq from "./srvs/mq";
 
 const option: TravelersOption = {
     config,
     before: function (app) {
 
+    },
+    ready: function (app, srvs) {
+        mq.run(srvs);
     },
     srvs,
     security,
@@ -27,3 +31,4 @@ const option: TravelersOption = {
 travelers(option).then(data => {
     // console.log(JSON.stringify(data, null, 4));
 });
+
