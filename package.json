@@ -11,7 +11,8 @@
     "knex": "^0.16.3",
     "koa2-cors": "^2.0.6",
     "mysql": "^2.16.0",
-    "travelers": "^2.1.5"
+    "nodemon": "^2.0.1",
+    "travelers": "^2.1.7"
   },
   "devDependencies": {
     "@types/amqplib": "^0.5.13",
@@ -26,6 +27,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "nodemon src/index.ts",
     "start": "ts-node src/index.ts",
     "pro": "tsc && pm2 start pm2.json",
     "lint": "npx eslint --ext .ts src",

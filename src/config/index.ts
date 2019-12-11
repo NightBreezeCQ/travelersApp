@@ -1,9 +1,22 @@
 
 
 // import a form 
-import development from "./development";
-import production from "./production";
+import defauilt from "./config.defauilt";
+import dev from "./config.dev";
+import pro from "./config.pro";
 
-export default {
-    ...development, ...production
-};
+let config = defauilt;
+
+if (process.env.NODE_ENV == "production") {
+    config = {
+        ...config,
+        ...pro
+    };
+} else {
+    config = {
+        ...config,
+        ...dev
+    };
+}
+
+export default config;

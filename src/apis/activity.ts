@@ -10,6 +10,7 @@ let items: travelersApis = [
         summary: "获取游戏每日活动列表",
         description: "获取游戏每日活动列表",
         operationId: "everyDay_list",
+        security: ["needAuth"],
         req: {
             query: {
                 name: joi.string().required().regex(/^\w+$/)

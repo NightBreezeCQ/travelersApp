@@ -82,10 +82,10 @@ async function producer() {
 export function run(srvs: Srvs) {
     producer();
     consumer(srvs);
-    setTimeout(() => {
-        mq.producer.sms.publish("", "helloKoalaQueue", Buffer.from("1111111111111"));
-        mq.producer.sms.publish("", "helloKoalaQueue1", Buffer.from("2222222222222"));
-    }, 2000);
+    // setTimeout(() => {
+    //     mq.producer.sms.publish("", "helloKoalaQueue", Buffer.from("1111111111111"));
+    //     mq.producer.sms.publish("", "helloKoalaQueue1", Buffer.from("2222222222222"));
+    // }, 2000);
 }
 
 export { mq };
