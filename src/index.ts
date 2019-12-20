@@ -8,7 +8,6 @@ import { needAuth } from "./security";
 import * as mq from "./srvs/mq";
 import * as cluster from "cluster";
 import * as os from "os";
-const numCPUs = require("os").cpus().length;
 
 const option: TravelersOption = {
     config,
@@ -41,7 +40,6 @@ if (cluster.isMaster) {
     });
 
 } else {
-    console.log("服务启动");
     travelers(option).then(data => {
         // console.log(JSON.stringify(data, null, 4));
     });
