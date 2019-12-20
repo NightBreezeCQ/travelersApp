@@ -6,6 +6,9 @@ import controllers from "./controllers/index";
 import config from "./config/index";
 import { needAuth } from "./security";
 import * as mq from "./srvs/mq";
+import * as cluster from "cluster";
+import * as os from "os";
+const numCPUs = require("os").cpus().length;
 
 const option: TravelersOption = {
     config,
@@ -27,7 +30,22 @@ const option: TravelersOption = {
     }
 };
 
-travelers(option).then(data => {
-    // console.log(JSON.stringify(data, null, 4));
-});
+if (cluster.isMaster) {
+    for (let i = 0; i < os.cpus().length; i++) {
+        cluster.fork();
+    }
+
+    cluster.on("exit", (worker, code, signal) => {
+        console.log("worker process died,id", worker.process.pid);
+        cluster.fork();
+    });
+
+} else {
+    console.log("服务启动");
+    travelers(option).then(data => {
+        // console.log(JSON.stringify(data, null, 4));
+    });
+}
+
+
 
