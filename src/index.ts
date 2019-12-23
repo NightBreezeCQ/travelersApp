@@ -5,17 +5,20 @@ import * as srvs from "./srvs/index";
 import controllers from "./controllers/index";
 import config from "./config/index";
 import { needAuth } from "./security";
-import * as mq from "./srvs/mq";
+// import * as mq from "./srvs/mq";
 import * as cluster from "cluster";
 import * as os from "os";
+import * as express from "express";
+import * as path from "path";
 
 const option: TravelersOption = {
     config,
     before: function (app) {
-
     },
     ready: function (app, srvs) {
-        mq.run(srvs);
+        // mq.run(srvs);
+        console.log('````````')
+        app.use('/public', express.static(path.join(__dirname, "../public")));
     },
     srvs,
     security: { needAuth },
@@ -30,7 +33,8 @@ const option: TravelersOption = {
 };
 
 if (cluster.isMaster) {
-    for (let i = 0; i < os.cpus().length; i++) {
+    const cpuNum = os.cpus().length
+    for (let i = 0; i < 1; i++) {
         cluster.fork();
     }
 
@@ -40,6 +44,7 @@ if (cluster.isMaster) {
     });
 
 } else {
+    console.log('启动服务')
     travelers(option).then(data => {
         // console.log(JSON.stringify(data, null, 4));
     });
