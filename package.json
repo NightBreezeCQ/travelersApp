@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "amqplib": "^0.5.5",
-    "bcrypt": "3.0.6",
+    "bcrypt": "5.0.0",
     "ioredis": "^4.14.1",
     "joi": "^14.3.1",
     "knex": "^0.16.3",
